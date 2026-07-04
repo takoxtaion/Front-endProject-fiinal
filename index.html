@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FootZone - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- navigation bar -->
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Foot<span>Zone</span></h1>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- hero section -->
+    <section class="hero">
+        <h2>Welcome to FootZone</h2>
+        <p>All about football - leagues, teams and results in one place.</p>
+        <a href="teams.html" class="btn">Explore Teams</a>
+    </section>
+
+    <!-- latest matches section (fetched from API) -->
+    <section class="matches">
+        <h2 class="section-title">Latest Premier League Results</h2>
+        <p id="matchesLoading" class="loading-text">Loading matches...</p>
+        <div class="match-list" id="matchList"></div>
+    </section>
+
+    <!-- popular leagues section -->
+    <section class="leagues">
+        <h2 class="section-title">Popular Leagues</h2>
+        <div class="league-grid">
+            <div class="league-card">
+                <h3>Premier League</h3>
+                <p>England</p>
+            </div>
+            <div class="league-card">
+                <h3>La Liga</h3>
+                <p>Spain</p>
+            </div>
+            <div class="league-card">
+                <h3>Serie A</h3>
+                <p>Italy</p>
+            </div>
+            <div class="league-card">
+                <h3>Bundesliga</h3>
+                <p>Germany</p>
+            </div>
+            <div class="league-card">
+                <h3>Ligue 1</h3>
+                <p>France</p>
+            </div>
+            <div class="league-card">
+                <h3>Erovnuli Liga</h3>
+                <p>Georgia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <p>FootZone &copy; 2026 | BTU Final Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
