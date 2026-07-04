@@ -1,9 +1,6 @@
-// ================= HOME PAGE: LATEST MATCHES =================
-
 const matchList = document.getElementById("matchList");
 const matchesLoading = document.getElementById("matchesLoading");
 
-// fetch last Premier League results (league id 4328)
 async function getLatestMatches() {
     try {
         const response = await fetch("https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=4328");
@@ -17,9 +14,7 @@ async function getLatestMatches() {
     }
 }
 
-// show matches on the home page
 function showMatches(events) {
-    // only show first 6 matches
     const matches = events.slice(0, 6);
 
     matches.forEach(function (match) {
@@ -43,7 +38,6 @@ if (matchList) {
     getLatestMatches();
 }
 
-// ================= TEAMS PAGE =================
 
 const teamGrid = document.getElementById("teamGrid");
 const searchInput = document.getElementById("searchInput");
@@ -53,7 +47,6 @@ const loading = document.getElementById("loading");
 
 let allTeams = [];
 
-// fetch teams from the API with async/await
 async function getTeams(league) {
     try {
         loading.style.display = "block";
@@ -73,7 +66,6 @@ async function getTeams(league) {
     }
 }
 
-// show teams on the page
 function showTeams(teams) {
     teamGrid.innerHTML = "";
 
@@ -94,17 +86,14 @@ function showTeams(teams) {
     updateFavButtons();
 }
 
-// league filter buttons
 if (leagueFilters) {
     leagueFilters.addEventListener("click", function (event) {
         if (event.target.classList.contains("filter-btn")) {
-            // remove active class from all buttons
             const buttons = document.querySelectorAll(".filter-btn");
             buttons.forEach(function (btn) {
                 btn.classList.remove("active");
             });
 
-            // add active class to the clicked button
             event.target.classList.add("active");
 
             teamsTitle.textContent = event.target.textContent + " Teams";
@@ -114,7 +103,6 @@ if (leagueFilters) {
     });
 }
 
-// search filter
 if (searchInput) {
     searchInput.addEventListener("input", function () {
         const text = searchInput.value.toLowerCase();
@@ -125,7 +113,6 @@ if (searchInput) {
     });
 }
 
-// ================= FAVORITES (localStorage) =================
 
 function getFavorites() {
     const favs = localStorage.getItem("favorites");
@@ -151,7 +138,6 @@ function toggleFavorite(name) {
     updateFavButtons();
 }
 
-// update button styles for favorited teams
 function updateFavButtons() {
     const favorites = getFavorites();
     const buttons = document.querySelectorAll(".fav-btn");
@@ -167,7 +153,6 @@ function updateFavButtons() {
     });
 }
 
-// event delegation for favorite buttons + first load
 if (teamGrid) {
     teamGrid.addEventListener("click", function (event) {
         if (event.target.classList.contains("fav-btn")) {
@@ -178,7 +163,6 @@ if (teamGrid) {
     getTeams("English Premier League");
 }
 
-// ================= CONTACT FORM =================
 
 const contactForm = document.getElementById("contactForm");
 
@@ -194,8 +178,7 @@ if (contactForm) {
         const emailError = document.getElementById("emailError");
         const messageError = document.getElementById("messageError");
         const successMsg = document.getElementById("successMsg");
-
-        // clear old errors
+        
         nameError.textContent = "";
         emailError.textContent = "";
         messageError.textContent = "";
@@ -203,7 +186,6 @@ if (contactForm) {
 
         let isValid = true;
 
-        // name validation
         if (name === "") {
             nameError.textContent = "Name is required";
             isValid = false;
@@ -212,7 +194,6 @@ if (contactForm) {
             isValid = false;
         }
 
-        // email validation
         if (email === "") {
             emailError.textContent = "Email is required";
             isValid = false;
@@ -221,7 +202,6 @@ if (contactForm) {
             isValid = false;
         }
 
-        // message validation
         if (message === "") {
             messageError.textContent = "Message is required";
             isValid = false;
@@ -231,7 +211,6 @@ if (contactForm) {
         }
 
         if (isValid) {
-            // save the message in localStorage
             const messages = JSON.parse(localStorage.getItem("messages")) || [];
             messages.push({
                 name: name,
